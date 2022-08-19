@@ -1,0 +1,85 @@
+ string intToRoman(int number) {
+        int PlaceValuesHolder[7];
+        int ThousandModulo = number%1000;
+        int FiveHundredsModulo = ThousandModulo%500;
+        int HunderedsModulo = FiveHundredsModulo%100;
+        int FiftyModulo = HunderedsModulo%50;
+        int TensModulo = HunderedsModulo%10;
+        int FivesModulo = TensModulo%5;
+
+                if(number >= 1000){
+                    PlaceValuesHolder[0] = number/1000;
+                }
+                if(ThousandModulo >= 500){
+                    PlaceValuesHolder[1] = ThousandModulo/500;
+                }
+                if(FiveHundredsModulo >= 100){
+                    PlaceValuesHolder[2] = FiveHundredsModulo/100;
+                }
+                if(HunderedsModulo >= 50){
+                    PlaceValuesHolder[3] = HunderedsModulo/50;
+                }
+                if(FiftyModulo >=10){
+                    PlaceValuesHolder[4] = FiftyModulo/10;
+                }
+                if(TensModulo >=5){
+                    PlaceValuesHolder[5] = TensModulo/5;
+                }
+                if(FivesModulo >=1 && FivesModulo<5){
+                    PlaceValuesHolder[6] = FivesModulo/1;
+                }
+        
+        string word;
+        if(PlaceValuesHolder[0] <=3){
+        for(int i = 0; i<PlaceValuesHolder[0]; i++){
+            word+="M";
+        }
+    }
+    
+    if(PlaceValuesHolder[1]==1 && PlaceValuesHolder[2] != 4){
+            word+="D";
+    }
+    
+    if(PlaceValuesHolder[2] <=3){
+        for(int i = 0; i<PlaceValuesHolder[2]; i++){
+            word+="C";
+        }
+    }
+    if(PlaceValuesHolder[2] == 4 && PlaceValuesHolder[1] == 1){
+        word+="CM";
+    }else if(PlaceValuesHolder[2] == 4 && PlaceValuesHolder[1]==0){
+        word+="CD";
+    }
+
+    if(PlaceValuesHolder[3]==1 && PlaceValuesHolder[4] != 4){
+            word+="L";
+    }
+
+    if(PlaceValuesHolder[4] <=3){
+        for(int i = 0; i<PlaceValuesHolder[4]; i++){
+            word+="X";
+        }
+    }
+    if(PlaceValuesHolder[4] == 4 && PlaceValuesHolder[3]==1){
+        word+="XC";
+    }else if(PlaceValuesHolder[4] == 4 && PlaceValuesHolder[3]==0){
+        word+="XL";
+    }
+
+    if(PlaceValuesHolder[5]==1 && PlaceValuesHolder[6]!=4){
+            word+="V";
+    }
+
+    if(PlaceValuesHolder[6] <=3){
+        for(int i = 0; i<PlaceValuesHolder[6]; i++){
+            word+="I";
+        }
+    }
+    if(PlaceValuesHolder[6] == 4 && PlaceValuesHolder[5]==0){
+        word+="IV";
+    }else if (PlaceValuesHolder[6] == 4 && PlaceValuesHolder[5]==1)
+    {
+        word+="IX";
+    }
+      return word;
+    }
